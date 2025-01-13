@@ -6,7 +6,7 @@ services:
     image: tailscale/tailscale:latest
     hostname: condor
     environment:
-      # TS_AUTHKEY: # Specify this in the environment
+      TS_AUTHKEY: ${TS_AUTHKEY}
       TS_EXTRA_ARGS: --advertise-exit-node --advertise-routes=192.168.1.0/24
       TS_STATE_DIR: /var/lib/tailscale
       TS_USERSPACE: false
