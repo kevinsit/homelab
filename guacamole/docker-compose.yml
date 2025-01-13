@@ -1,0 +1,53 @@
+secrets:
+  pg_password:
+    file: /root/docker/guacamole/pg_password.txt
+networks:
+  guacnetwork:
+    driver: bridge
+services:
+  guacd:
+    container_name: guacd
+    image: guacamole/guacd
+    restart: always
+    volumes:
+      - /root/docker/guacamole/drive:/drive:rw
+      - /root/docker/guacamole/record:/record:rw
+    networks:
+      - guacnetwork
+  postgres:
+    container_name: postgres_guacamole
+    environment:
+      PGDATA: /var/lib/postgresql/data/guacamole
+      POSTGRES_DB: guacamole_db
+      POSTGRES_PASSWORD: /run/secrets/pg_password
+      POSTGRES_USER: guacamole_user
+    image: postgres:15.2-alpine
+    restart: always
+    volumes:
+      - /root/docker/guacamole/init:/docker-entrypoint-initdb.d:z
+      - /root/docker/guacamole/data:/var/lib/postgresql/data:Z
+    networks:
+      - guacnetwork
+    secrets:
+      - pg_password
+  guacamole:
+    container_name: guacamole
+    depends_on:
+      - guacd
+      - postgres
+    environment:
+      GUACD_HOSTNAME: guacd
+      POSTGRES_DATABASE: guacamole_db
+      POSTGRES_HOSTNAME: postgres
+      POSTGRES_PASSWORD: /run/secrets/pg_password
+      POSTGRES_USER: guacamole_user
+    image: guacamole/guacamole
+    volumes:
+      - /root/docker/guacamole/record:/record:rw
+    ports:
+      - 8888:8080/tcp # Guacamole is on :8080/guacamole, not /.
+    networks:
+      - guacnetwork
+    secrets:
+      - pg_password
+    restart: always
