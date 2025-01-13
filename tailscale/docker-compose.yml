@@ -1,6 +1,3 @@
-secrets:
-  ts_authkey:
-    file: /root/docker/tailscale/ts_authkey.txt
 services:
   tailscale:
     image: tailscale/tailscale:latest
