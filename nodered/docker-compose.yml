@@ -7,3 +7,4 @@ services:
       - "1880:1880"
     volumes:
       - ${BASEDIR}/docker/nodered/data:/data
+    user: root
