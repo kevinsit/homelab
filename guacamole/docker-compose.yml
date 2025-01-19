@@ -38,7 +38,7 @@ services:
       POSTGRES_USER: guacamole_user
     image: guacamole/guacamole
     volumes:
-      - /root/docker/guacamole/record:/record:rw
+      - ${BASEDIR}/docker/guacamole/record:/record:rw
     ports:
       - 8888:8080/tcp # Guacamole is on :8080/guacamole, not /.
     networks:
