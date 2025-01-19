@@ -5,7 +5,7 @@ services:
     network_mode: host
     restart: always
     volumes:
-      - /root/docker/upsnap/data:/app/pb_data
+      - ${BASEDIR}/docker/upsnap/data:/app/pb_data
     environment:
        - TZ=America/Vancouver # Set container timezone for cron schedules
        - UPSNAP_INTERVAL=@every 10s # Sets the interval in which the devices are pinged
