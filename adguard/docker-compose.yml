@@ -9,6 +9,6 @@ services:
       - "5389:443/tcp"
       - "3000:3000/tcp"
     volumes:
-      - /root/docker/adguard/work:/opt/adguardhome/work
-      - /root/docker/adguard/conf:/opt/adguardhome/conf
+      - ${HOME}/docker/adguard/work:/opt/adguardhome/work
+      - ${HOME}/docker/adguard/conf:/opt/adguardhome/conf
     restart: always
