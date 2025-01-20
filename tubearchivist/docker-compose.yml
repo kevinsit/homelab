@@ -47,7 +47,7 @@ services:
     restart: always
     environment:
       - "ELASTIC_PASSWORD=${ELASTIC_PASSWORD}"       # matching Elasticsearch password
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Dorg.elasticsearch.nativeaccess.enableVectorLibrary=false"
       - "xpack.security.enabled=true"
       - "discovery.type=single-node"
       - "path.repo=/usr/share/elasticsearch/data/snapshot"
