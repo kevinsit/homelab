@@ -1,0 +1,9 @@
+services:
+  psitransfer:
+    image: psitrax/psitransfer:latest
+    ports:
+      - "3888:3000"
+    environment:
+      - PSITRANSFER_ADMIN_PASS=${PSITRANSFER_ADMIN_PASS}
+    volumes:
+      - ${PSITRANSFER_DATADIR}:/data
