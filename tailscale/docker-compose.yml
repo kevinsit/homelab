@@ -5,7 +5,7 @@ services:
     environment:
       TS_HOSTNAME: ${TS_HOSTNAME}
       TS_AUTHKEY: ${TS_AUTHKEY}
-      TS_EXTRA_ARGS: --advertise-exit-node --advertise-routes=192.168.1.0/24
+      TS_EXTRA_ARGS: --advertise-exit-node --advertise-routes=192.168.1.0/24 --advertise-tags=${TS_TAGS}
       TS_STATE_DIR: /var/lib/tailscale
       TS_USERSPACE: false
     volumes:
