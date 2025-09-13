@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=${ST_PUID}
       - PGID=${ST_PGID}
-      - STGUIADDRESS=
+      - STGUIADDRESS=0.0.0.0:8384
       - PCAP=cap_chown,cap_fowner+ep
     volumes:
       - /mnt/user/appdata/portainer-be-data/syncthing:/var/syncthing
