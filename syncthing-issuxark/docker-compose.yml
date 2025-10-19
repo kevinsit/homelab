@@ -10,7 +10,7 @@ services:
       - STGUIADDRESS=0.0.0.0:8384
       - PCAP=cap_chown,cap_fowner+ep
     volumes:
-      - /volume1/syncthing-emulation:/var/syncthing
+      - /share/syncthing-emulation:/var/syncthing
       - /share/backup-kevin:/var/syncthing/backup-kevin
     # ports:
     #   - 38384:8384 # Web UI
