@@ -4,8 +4,8 @@ services:
     container_name: termix
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8787:8080"
     volumes:
       - ${BASEDIR}/termix:/app/data
     environment:
-      PORT: "8787:8080"
+      PORT: "8080"
