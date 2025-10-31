@@ -19,7 +19,7 @@ services:
     volumes:
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
-      - ${ALBUM_LOCATION_1}:/external/${ALBUM_LOCATION_1}
+      - ${SHARE_1}:/external/${SHARE_1}
     ports:
       - '2283:2283'
     depends_on:
